@@ -1,10 +1,10 @@
-FROM centos:7 
-ENV AKAMAI_CLI_HOME=/cli
-RUN mkdir /cli
+FROM centos:7
+
 RUN yum install epel-release -y -q && \
-    yum update -y
-RUN yum install -q -y git wget jq curl && \
-    wget https://github.com/akamai/cli/releases/download/1.0.2/akamai-1.0.2-linuxamd64 && \
+    yum update -y -q && \
+    yum install -y -q wget curl jq && \
+    yum clean all && rm -rf /var/cache/yum && \
+    wget --quiet https://github.com/akamai/cli/releases/download/1.0.2/akamai-1.0.2-linuxamd64 && \
     mv akamai-*-linuxamd64 /usr/local/bin/akamai && chmod +x /usr/local/bin/akamai && \
     mkdir -p /cli/.akamai-cli
 
@@ -17,7 +17,7 @@ RUN echo "[cli]" > /cli/.akamai-cli/config && \
     echo "install-in-path       =" >> /cli/.akamai-cli/config && \
     echo "last-upgrade-check    = ignore" >> /cli/.akamai-cli/config
 
-RUN akamai install property --force && \ 
+RUN akamai install property --force && \
     akamai install purge --force && \
     akamai install https://github.com/apiheat/akamai-cli-reporting --force
 
