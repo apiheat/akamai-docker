@@ -1,9 +1,14 @@
 FROM centos:7
 
-ENV AKAMAI_CLI_HOME=/cli
-RUN yum install epel-release -y -q && \
-    yum install -y -q wget jq && \
+ENV AKAMAI_CLI_HOME=/cli \
+    PIP_NO_CACHE_DIR=off
+
+RUN yum install epel-release --setopt=tsflags=nodocs -y -q && \
+    yum install -y -q --setopt=tsflags=nodocs https://centos7.iuscommunity.org/ius-release.rpm && \
+    yum install -y -q --setopt=tsflags=nodocs wget jq python36u python36u-pip && \
     yum clean all && rm -rf /var/cache/yum && \
+    ln -s /usr/bin/python3.6 /usr/bin/python3 && ln -s /usr/bin/pip3.6 /usr/bin/pip3 && \
+    pip3 install --no-cache-dir edgegrid-python && rm -rf /root/.cache/ && \
     wget --quiet -O /usr/local/bin/akamai https://github.com/akamai/cli/releases/download/1.0.2/akamai-1.0.2-linuxamd64 && \
     chmod +x /usr/local/bin/akamai
 
@@ -17,7 +22,8 @@ RUN mkdir -p /cli/.akamai-cli && \
     echo "install-in-path       =" >> /cli/.akamai-cli/config && \
     echo "last-upgrade-check    = ignore" >> /cli/.akamai-cli/config
 
-RUN akamai install property --force && \
+RUN akamai install cps --force && \
+    akamai install property --force && \
     akamai install purge --force && \
     akamai install https://github.com/apiheat/akamai-cli-a2 --force && \
     akamai install https://github.com/apiheat/akamai-cli-cpcodes --force && \
