@@ -45,6 +45,15 @@ RUN akamai install cps --force && \
     rm -rf /cli/.akamai-cli/src/cli-property/.git && \
     rm -rf /cli/.akamai-cli/src/cli-purge/.git
 
+    # AppSec as Akamai installation is fucked
+RUN yum install -y -q --setopt=tsflags=nodocs git && \
+    git clone https://github.com/akamai/cli-appsec /cli/.akamai-cli/src/cli-appsec && \
+    rm -rf /cli/.akamai-cli/src/cli-appsec/.git /cli/.akamai-cli/src/cli-appsec/bin/akamai-appsec && \
+    wget --quiet -O /cli/.akamai-cli/src/cli-appsec/bin/akamai-appsec https://github.com/akamai/cli-appsec/releases/download/0.1.0/akamai-appsec-0.1.0-linux-amd64 && \
+    chmod +x /cli/.akamai-cli/src/cli-appsec/bin/akamai-appsec && \
+    yum remove -y -q git && yum autoremove -y && yum clean all && rm -rf /var/cache/yum
+
+
 ENV AKAMAI_CLI_HOME=/cli
 VOLUME /cli
 VOLUME /root/.edgerc
