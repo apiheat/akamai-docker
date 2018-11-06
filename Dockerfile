@@ -29,6 +29,7 @@ RUN akamai install cps --force && \
     akamai install https://github.com/apiheat/akamai-cli-cpcodes --force && \
     akamai install https://github.com/apiheat/akamai-cli-frn --force && \
     akamai install https://github.com/apiheat/akamai-cli-netlist --force && \
+    akamai install https://github.com/apiheat/akamai-cli-netstorage --force && \
     akamai install https://github.com/apiheat/akamai-cli-overview --force && \
     akamai install https://github.com/apiheat/akamai-cli-siteshield --force && \
     akamai install https://github.com/apiheat/akamai-cli-users --force && \
@@ -37,6 +38,7 @@ RUN akamai install cps --force && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-cpcodes/.git && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-frn/.git && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-netlist/.git && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-netstorage/.git && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-overview/.git && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-reporting/.git && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-siteshield/.git && \
