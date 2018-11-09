@@ -23,29 +23,29 @@ RUN mkdir -p /cli/.akamai-cli && \
     echo "last-upgrade-check    = ignore" >> /cli/.akamai-cli/config
 
 RUN akamai install cps --force && \
-    akamai install property --force && \
-    akamai install purge --force && \
-    akamai install https://github.com/apiheat/akamai-cli-a2 --force && \
-    akamai install https://github.com/apiheat/akamai-cli-cpcodes --force && \
-    akamai install https://github.com/apiheat/akamai-cli-frn --force && \
-    akamai install https://github.com/apiheat/akamai-cli-netlist --force && \
-    akamai install https://github.com/apiheat/akamai-cli-netstorage --force && \
-    akamai install https://github.com/apiheat/akamai-cli-overview --force && \
-    akamai install https://github.com/apiheat/akamai-cli-siteshield --force && \
-    akamai install https://github.com/apiheat/akamai-cli-users --force && \
-    akamai install https://github.com/apiheat/akamai-cli-reporting --force && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-a2/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-cpcodes/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-frn/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-netlist/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-netstorage/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-overview/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-reporting/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-siteshield/.git && \
-    rm -rf /cli/.akamai-cli/src/akamai-cli-users/.git && \
-    rm -rf /cli/.akamai-cli/src/cli-cps/.git && \
-    rm -rf /cli/.akamai-cli/src/cli-property/.git && \
-    rm -rf /cli/.akamai-cli/src/cli-purge/.git
+    rm -rf /cli/.akamai-cli/src/cli-cps/.git
+RUN akamai install property --force && \
+    rm -rf /cli/.akamai-cli/src/cli-property/.git
+RUN akamai install purge --force && \
+    rm -rf /cli/.akamai-cli/src/cli-purge/.git 
+RUN akamai install https://github.com/apiheat/akamai-cli-a2 --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-a2/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-cpcodes --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-cpcodes/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-frn --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-frn/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-netlist --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-netlist/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-netstorage --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-netstorage/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-overview --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-overview/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-siteshield --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-siteshield/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-users --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-users/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-reporting --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-reporting/.git
 
     # AppSec as Akamai installation is fucked
 RUN yum install -y -q --setopt=tsflags=nodocs git && \
