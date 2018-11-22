@@ -27,7 +27,7 @@ RUN akamai install cps --force && \
 RUN akamai install property --force && \
     rm -rf /cli/.akamai-cli/src/cli-property/.git
 RUN akamai install purge --force && \
-    rm -rf /cli/.akamai-cli/src/cli-purge/.git 
+    rm -rf /cli/.akamai-cli/src/cli-purge/.git
 RUN akamai install https://github.com/apiheat/akamai-cli-a2 --force && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-a2/.git
 RUN akamai install https://github.com/apiheat/akamai-cli-cpcodes --force && \
@@ -46,6 +46,8 @@ RUN akamai install https://github.com/apiheat/akamai-cli-users --force && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-users/.git
 RUN akamai install https://github.com/apiheat/akamai-cli-reporting --force && \
     rm -rf /cli/.akamai-cli/src/akamai-cli-reporting/.git
+RUN akamai install https://github.com/apiheat/akamai-cli-diagnostic-tools --force && \
+    rm -rf /cli/.akamai-cli/src/akamai-cli-diagnostic-tools/.git
 
     # AppSec as Akamai installation is fucked
 RUN yum install -y -q --setopt=tsflags=nodocs git && \
