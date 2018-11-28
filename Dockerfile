@@ -13,7 +13,7 @@ RUN yum install epel-release --setopt=tsflags=nodocs -y -q && \
     chmod +x /usr/local/bin/akamai && \
     echo '[ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd' >> /root/.bashrc && \
     echo '### Welcome to Akamai CLI docker container (https://github.com/apiheat/akamai-docker) ###' > /etc/motd && \
-    echo '### The following versions are installed ###' > /etc/motd && \
+    echo '### The following versions are installed ###' >> /etc/motd && \
     akamai --version >> /etc/motd
 
 RUN mkdir -p /cli/.akamai-cli && \
