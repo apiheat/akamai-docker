@@ -29,6 +29,9 @@ RUN mkdir -p /cli/.akamai-cli && \
 RUN akamai install cps --force && \
     rm -rf /cli/.akamai-cli/src/cli-cps/.git && \
     akamai cps --version >> /etc/motd
+RUN akamai install dns --force && \
+    rm -rf /cli/.akamai-cli/src/cli-dns/.git && \
+    akamai dns --version >> /etc/motd
 RUN akamai install property --force && \
     rm -rf /cli/.akamai-cli/src/cli-property/.git && \
     echo "akamai property $(akamai property --version)" >> /etc/motd
