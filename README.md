@@ -22,3 +22,5 @@ akamai cps setup --section <SECTION_NAME if not cps>
 # and then any command you want, for example:
 akamai cps list --section <SECTION_NAME if not cps>
 ```
+
+* Published Akamai Network lists 5.0.2
