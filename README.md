@@ -23,4 +23,6 @@ akamai cps setup --section <SECTION_NAME if not cps>
 akamai cps list --section <SECTION_NAME if not cps>
 ```
 
+* 28-02-2019 : akamai-cli-cpcodes v4.0.0 
 * Published Akamai Network lists 5.0.2
+
